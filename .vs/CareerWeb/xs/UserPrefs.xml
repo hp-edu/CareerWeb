@@ -1,9 +1,30 @@
 ﻿<Properties StartupConfiguration="{3D0B6356-D8F8-49AB-9C2C-5E0B0FE29D1B}|https">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.UI PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="UI/Pages/Index.razor">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="UI/Pages/Index.razor.css">
     <Files>
-      <File FileName="UI/Pages/Index.razor" Line="8" Column="1" />
-      <File FileName="UI/Pages/Index.razor.css" Line="22" Column="1" />
+      <File FileName="UI/Pages/Index.razor" Line="9" Column="1" />
+      <File FileName="UI/Pages/Index.razor.css" Line="21" Column="1" />
+      <File FileName="UI/Pages/Apply.razor" Line="3" Column="6" />
+      <File FileName="UI/Pages/Apply.razor.css" Line="1" Column="1" />
+      <File FileName="UI/Pages/Benefits.razor" Line="9" Column="24" />
+      <File FileName="UI/Pages/Benefits.razor.css" Line="3" Column="1" />
+      <File FileName="UI/Pages/Internship.razor" Line="13" Column="6" />
+      <File FileName="UI/Pages/Internship.razor.css" Line="3" Column="1" />
+      <File FileName="UI/Pages/LifeAtUju.razor" Line="19" Column="15" />
+      <File FileName="UI/Pages/LifeAtUju.razor.css" Line="1" Column="1" />
+      <File FileName="UI/Properties/launchSettings.json" Line="1" Column="1" />
+      <File FileName="UI/Shared/Header.razor" Line="12" Column="5" />
+      <File FileName="UI/Shared/MainLayout.razor" Line="13" Column="7" />
+      <File FileName="UI/Shared/MainLayout.razor.css" Line="23" Column="1" />
+      <File FileName="UI/wwwroot/js/bootstrap.bundle.min.js" Line="7" Column="18" />
+      <File FileName="UI/wwwroot/css/bootstrap/bootstrap.min.css" Line="1" Column="1" />
+      <File FileName="UI/wwwroot/css/app.css" Line="13" Column="1" />
+      <File FileName="UI/wwwroot/index.html" Line="27" Column="25" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,14 +32,18 @@
           <Node name="CareerWeb">
             <Node name="UI">
               <Node name="Pages">
+                <Node name="Apply.razor" expanded="True" />
+                <Node name="Benefits.razor" expanded="True" />
                 <Node name="Index.razor" expanded="True">
                   <Node name="Index.razor.css" selected="True" />
                 </Node>
+                <Node name="Internship.razor" expanded="True" />
+                <Node name="LifeAtUju.razor" expanded="True" />
               </Node>
-              <Node name="wwwroot" expanded="True">
-                <Node name="css" expanded="True" />
-                <Node name="img" expanded="True">
-                  <Node name="index" expanded="True" />
+              <Node name="wwwroot">
+                <Node name="css" expanded="True">
+                  <Node name="bootstrap" expanded="True" />
+                  <Node name="open-iconic" expanded="True" />
                 </Node>
               </Node>
             </Node>
@@ -27,10 +52,5 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
 </Properties>
