@@ -33,4 +33,8 @@
     <Content Remove="wwwroot\img\benefits\" />
     <Content Remove="wwwroot\img\intern\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CareerWeb.Models\CareerWeb.Models.csproj" />
+  </ItemGroup>
 </Project>
