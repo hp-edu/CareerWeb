@@ -16,7 +16,7 @@
 @code {
     [Parameter] public JobPosting JobPosting { get; set; }
 
-    private async Task SeeJobDetail(int id)
+    private void SeeJobDetail(int id)
     {
         Console.WriteLine($"Job ID {id} is clicked");
     }
