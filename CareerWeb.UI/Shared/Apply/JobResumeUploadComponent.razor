@@ -1,0 +1,16 @@
+﻿<div class="my-5 mx-auto text-center w-50">
+    <h1 class="mb-5">@Posting.JobTitle</h1>
+</div>
+<p>Resume Upload</p>
+
+<div class="overflow-hidden text-center" style="min-height:200px">
+    <div class="col mx-auto my-5">
+        <a class="btn bg-light mt-3 fw-bold smooth-rounded px-5 py-2" @onclick="() => UpdateStatus.Invoke(ApplyStatus.OnQuestionnaire)">Next</a>
+    </div>
+    <a href="jobs">&lt; Back to search results </a>
+</div>
+@code {
+    [Parameter] public JobPosting Posting { get; set; }
+    [Parameter] public Action<ApplyStatus> UpdateStatus { get; set; }
+
+}

@@ -8,6 +8,10 @@ body {
     padding-top: 3rem;
 }
 
+a {
+    cursor: pointer;
+}
+
 /* MARKETING CONTENT
 -------------------------------------------------- */
 
