@@ -1,124 +1,14 @@
-﻿@page "/apply"
+﻿using CareerWeb.Models.Job;
 
-<div class="container">
-    <div class="my-5 mx-auto text-center w-50">
-        <h1 class="mb-3">Find your perfect role.</h1>
-        <div class="input-group flex-nowrap mb-1">
-            <span class="input-group-text bg-light border-end-0"><i class="fa fa-search"></i></span>
-            <input type="text" class="form-control form-control-lg bg-light border-start-0 p-3" placeholder="Search by role or keyword">
-        </div>
-        <p class="text-muted">
-            Most corporate roles require English-language skills.
-        </p>
-    </div>
-
-
-    <div class="px-3 py-2 border-bottom mb-3">
-        <div class="container d-flex flex-wrap justify-content-center">
-            <div class="col-12 col-lg-auto me-lg-auto">
-                <span class="me-3"><i class="fas fa-list"></i>Filter</span>|
-                <span class="ms-3">Clear All</span>
-            </div>
-
-            <div class="text-end">
-                <span class="me-3"><i class="fas fa-search"></i></span>|
-                <span class="ms-3 me-3"><i class="fas fa-star"></i></span>|
-                <span class="ms-3"><i class="fas fa-history"></i></span>
-            </div>
-        </div>
-    </div>
-
-    <div>
-        <div class="row">
-            <div class="col-md-2">
-                <h5>Refine by</h5>
-                <div>
-                    <p>
-                        <div data-bs-toggle="collapse" data-bs-target="#location" aria-expanded="false" aria-controls="location">
-                            Location
-                        </div>
-                    </p>
-                    <div class="collapse" id="location">
-                        <div class="input-group flex-nowrap mb-1">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <p>
-                        <div data-bs-toggle="collapse" data-bs-target="#keyword" aria-expanded="false" aria-controls="keyword">
-                            Keyword
-                        </div>
-                    </p>
-                    <div class="collapse" id="keyword">
-                        <div class="input-group flex-nowrap mb-1">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <p>
-                        <div data-bs-toggle="collapse" data-bs-target="#teams" aria-expanded="false" aria-controls="teams">
-                            Teams
-                        </div>
-                    </p>
-                    <div class="collapse" id="teams">
-                        <div class="input-group flex-nowrap mb-1">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <p>
-                        <div data-bs-toggle="collapse" data-bs-target="#productservice" aria-expanded="false" aria-controls="productservice">
-                            Products and Services
-                        </div>
-                    </p>
-                    <div class="collapse" id="productservice">
-                        <div class="input-group flex-nowrap mb-1">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <p>
-                        <div data-bs-toggle="collapse" data-bs-target="#language" aria-expanded="false" aria-controls="language">
-                            Language Skills
-                        </div>
-                    </p>
-                    <div class="collapse" id="language">
-                        <div class="input-group flex-nowrap mb-1">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <p class="text-muted">1 filter(s) applied</p>
-                <p class="ms-5"> United States</p>
-                <hr />
-                <div class="d-flex mb-5">
-                    <div class="me-auto fs-5 fw-bold">600+ Results</div>
-                    <div class="fs-5">Sort By: <span class="fw-bold">Newest</span><i class="ms-3 fas fa-angle-down"></i></div>
-                </div>
-                @{
-                    foreach (var JobPosting in JobPostings)
-                    {
-                        <JobItem JobPosting=JobPosting></JobItem>
-                    }
-                }
-            </div>
-        </div>
-    </div>
-</div>
-
-
-@code {
-    public List<JobPosting> JobPostings = new List<JobPosting>();
-
-    protected override void OnInitialized()
+namespace CareerWeb.UI.Services
+{
+    public class JobService
     {
-        JobPostings.Add(new JobPosting()
+        public List<JobPosting> JobPostings = new List<JobPosting>();
+
+        public JobService()
+        {
+            JobPostings.Add(new JobPosting()
             {
                 ID = 1,
                 JobTitle = "Backend Developer",
@@ -153,10 +43,9 @@ and for formal education related to advancing your career at Uju, reimbursement 
 educational expenses — including tuition. Additionally, this role might be eligible for discretionary
 bonuses or commission payments as well as relocation. Learn more about Uju Benefits.<br/>For information about pay, if you are interested in roles located in one of our California, Colorado,
 New York or Washington locations click here to select a store and view pay information.<br/>",
-                CreatedAt = new DateTime(2023, 11, 11)
+                PostedAt = new DateTime(2023, 11, 11)
             });
-
-        JobPostings.Add(new JobPosting()
+            JobPostings.Add(new JobPosting()
             {
                 ID = 2,
                 JobTitle = "Database Developer",
@@ -191,10 +80,9 @@ and for formal education related to advancing your career at Uju, reimbursement 
 educational expenses — including tuition. Additionally, this role might be eligible for discretionary
 bonuses or commission payments as well as relocation. Learn more about Uju Benefits.<br/>For information about pay, if you are interested in roles located in one of our California, Colorado,
 New York or Washington locations click here to select a store and view pay information.<br/>",
-                CreatedAt = new DateTime(2023, 10, 1)
+                PostedAt = new DateTime(2023, 10, 1)
             });
-
-        JobPostings.Add(new JobPosting()
+            JobPostings.Add(new JobPosting()
             {
                 ID = 3,
                 JobTitle = "Frontend Developer",
@@ -229,7 +117,25 @@ and for formal education related to advancing your career at Uju, reimbursement 
 educational expenses — including tuition. Additionally, this role might be eligible for discretionary
 bonuses or commission payments as well as relocation. Learn more about Uju Benefits.<br/>For information about pay, if you are interested in roles located in one of our California, Colorado,
 New York or Washington locations click here to select a store and view pay information.<br/>",
-                CreatedAt = new DateTime(2023, 9, 3)
+                PostedAt = new DateTime(2023, 9, 3)
             });
+        }
+
+        public List<JobSummary> GetJobList()
+        {
+            return JobPostings.Select(o => new JobSummary()
+            {
+                ID = o.ID,
+                JobTitle = o.JobTitle,
+                Department = o.Department,
+                Location = o.Location,
+                PostedAt = o.PostedAt
+            }).ToList();
+        }
+
+        public JobPosting GetJobPosting(int id)
+        {
+            return JobPostings.SingleOrDefault(o => o.ID == id);
+        }
     }
 }

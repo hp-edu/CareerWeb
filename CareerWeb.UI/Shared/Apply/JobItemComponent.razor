@@ -1,0 +1,26 @@
+﻿@inject NavigationManager Navigation
+
+<div class="row mb-4">
+    <div class="col-md-4">
+        <a class="h5 text-primary" @onclick="() => SeeJobDetail(JobSummary.ID)">@JobSummary.JobTitle</a>
+        <h1 class="fs-6">@JobSummary.Department</h1>
+        <h1 class="fs-6 text-muted">@JobSummary.PostedAt.ToShortDateString()</h1>
+    </div>
+    <div class="col-md-4">
+        <h1 class="fs-6">
+            @JobSummary.Location
+        </h1>
+    </div>
+    <div class="col-md-1"><i class="far fa-star text-primary"></i></div>
+    <div class="col-md-1"><i class="fas fa-plus"></i></div>
+</div>
+<hr />
+
+@code {
+    [Parameter] public JobSummary JobSummary { get; set; }
+
+    private void SeeJobDetail(int jobID)
+    {
+        Navigation.NavigateTo($"jobs/{jobID}");
+    }
+}

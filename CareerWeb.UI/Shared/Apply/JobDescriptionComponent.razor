@@ -1,0 +1,85 @@
+﻿<div class="my-5 mx-auto text-center w-50">
+    <h1 class="mb-5">@Posting.JobTitle</h1>
+    <p>@Posting.Location<br />@Posting.Department</p>
+</div>
+
+<div class="row d-flex gx-5">
+    <div class="col-md-3 order-md-1">
+        <h3>Summary</h3>
+        <h5>Posted: @Posting.PostedAt.ToShortDateString()</h5>
+    </div>
+    <div class="col-md order-md-2">
+        <p>
+            @((MarkupString)Posting.Summary)
+        </p>
+    </div>
+</div>
+
+<hr />
+
+<div class="row d-flex gx-5">
+    <div class="col-md-3 order-md-1">
+        <h3>Key Qualifications</h3>
+    </div>
+    <div class="col-md order-md-2">
+        <p>
+            @((MarkupString)Posting.Qualification)
+        </p>
+    </div>
+</div>
+
+<hr />
+
+<div class="row d-flex gx-5">
+    <div class="col-md-3 order-md-1">
+        <h3>Descriptions </h3>
+    </div>
+    <div class="col-md order-md-2">
+        <p>
+            @((MarkupString)Posting.Description)
+        </p>
+    </div>
+</div>
+
+<hr />
+
+<div class="row d-flex gx-5">
+    <div class="col-md-3 order-md-1">
+        <h3>
+            Additional Requirements
+        </h3>
+    </div>
+    <div class="col-md order-md-2">
+        <p>
+            @((MarkupString)Posting.AddtionalRequrement)
+        </p>
+    </div>
+</div>
+
+<hr />
+
+<div class="row d-flex gx-5">
+    <div class="col-md-3 order-md-1">
+        <h3>Pay & Benefits</h3>
+    </div>
+    <div class="col-md order-md-2">
+        <p>
+            @((MarkupString)Posting.PayBenefit)
+        </p>
+    </div>
+</div>
+
+<hr/>
+
+<div class="overflow-hidden text-center" style="min-height:200px">
+    <div class="col mx-auto my-5">
+        <a class="btn bg-light mt-3 fw-bold smooth-rounded px-5 py-2" @onclick="() => UpdateStatus.Invoke(ApplyStatus.OnResumeUpload)">Submit my Resume</a>
+    </div>
+    <a href="jobs">&lt; Back to search results </a>
+</div>
+
+@code {
+    [Parameter] public JobPosting Posting { get; set; }
+    [Parameter] public Action<ApplyStatus> UpdateStatus { get; set; }
+
+}
