@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CareerWeb.UI", "CareerWeb.U
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CareerWeb.Models", "CareerWeb.Models\CareerWeb.Models.csproj", "{784600A9-084F-4AD2-BBE3-4AEABFC7665D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareerWeb.API", "CareerWeb.API\CareerWeb.API.csproj", "{FECC49B8-0EB3-4379-AE05-C76F1B086679}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{784600A9-084F-4AD2-BBE3-4AEABFC7665D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{784600A9-084F-4AD2-BBE3-4AEABFC7665D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{784600A9-084F-4AD2-BBE3-4AEABFC7665D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FECC49B8-0EB3-4379-AE05-C76F1B086679}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FECC49B8-0EB3-4379-AE05-C76F1B086679}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FECC49B8-0EB3-4379-AE05-C76F1B086679}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FECC49B8-0EB3-4379-AE05-C76F1B086679}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
