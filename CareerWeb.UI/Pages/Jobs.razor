@@ -118,8 +118,8 @@
 
     public List<JobSummary> JobSummaries = new List<JobSummary>();
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        JobSummaries = JobService.GetJobList();
+        JobSummaries = await JobService.GetJobList();
     }
 }

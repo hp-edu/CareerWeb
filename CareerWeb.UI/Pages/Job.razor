@@ -38,11 +38,11 @@
 
     private ApplyStatus ApplyStatus { get; set; } = ApplyStatus.OnDescription;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         if (int.TryParse(JobID, out int jobID))
         {
-            Posting = JobService.GetJobPosting(jobID);
+            Posting = await JobService.GetJobPosting(jobID);
         }
     }
 
