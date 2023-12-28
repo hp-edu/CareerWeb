@@ -1,5 +1,5 @@
 ﻿<div class="my-5 mx-auto text-center w-50">
-    <h1 class="mb-5">@Posting.JobTitle</h1>
+    <h1 class="mb-5">@Posting.Detail.JobTitle</h1>
 </div>
 <div class="my-5 mx-auto text-center w-50">
     <div class="alert alert-primary" role="alert">
@@ -11,5 +11,5 @@
     <a href="jobs">&lt; Back to search results </a>
 </div>
 @code {
-    [Parameter] public JobPosting Posting { get; set; }
+    [Parameter] public JobPostingAPIReponse Posting { get; set; }
 }

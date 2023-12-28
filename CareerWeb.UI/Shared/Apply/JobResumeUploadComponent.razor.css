@@ -1,0 +1,9 @@
+﻿#drop-area {
+    border-style: dashed;
+    text-align: center;
+}
+
+.my-form p {
+    margin-top: 20px;
+    font-size: 20px;
+}

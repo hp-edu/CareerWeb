@@ -13,6 +13,6 @@ namespace CareerWeb.Models.Job
         public string Description { get; set; }
         public string AddtionalRequrement { get; set; }
         public string PayBenefit { get; set; }
-        public List<int> QuestionnaireIDs { get; set; }
+        public int[] QuestionnaireID { get; set; }
     }
 }
