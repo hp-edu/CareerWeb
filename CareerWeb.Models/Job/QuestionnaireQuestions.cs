@@ -10,5 +10,6 @@ namespace CareerWeb.Models.Job
     {
         public int ID { get; set; }
         public string Question { get; set; }
+        public List<QuestionnaireAnswers> Answers { get; set; }
     }
 }

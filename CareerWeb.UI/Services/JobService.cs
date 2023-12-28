@@ -22,11 +22,11 @@ namespace CareerWeb.UI.Services
             return await response.Content.ReadFromJsonAsync<List<JobSummary>>();
         }
 
-        public async Task<JobPosting> GetJobPosting(int id)
+        public async Task<JobPostingAPIReponse> GetJobPosting(int id)
         {
             var response = await _httpClient.GetAsync($"Job/job/{id}");
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadFromJsonAsync<JobPosting>();
+            return await response.Content.ReadFromJsonAsync<JobPostingAPIReponse>();
         }
     }
 }

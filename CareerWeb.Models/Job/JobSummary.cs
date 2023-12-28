@@ -11,8 +11,8 @@ namespace CareerWeb.Models.Job
         public int ID { get; set; }
         public string JobTitle { get; set; }
         public string Department { get; set; }
-        public string Location { get; set; }
-        public DateTime PostedAt { get; set; }
+        public string JobLocation { get; set; }
+        public DateTime CreatedAt { get; set; }
 
     }
 }

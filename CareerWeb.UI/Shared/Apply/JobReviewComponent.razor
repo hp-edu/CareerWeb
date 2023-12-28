@@ -1,7 +1,35 @@
 ﻿<div class="my-5 mx-auto text-center w-50">
-    <h1 class="mb-5">@Posting.JobTitle</h1>
+    <h1 class="mb-5">@Posting.Detail.JobTitle</h1>
+    <h2 class="mb-2">Review Your Information</h2>
+
 </div>
-<p>Reivew</p>
+
+<div class="my-5 mx-auto w-50">
+    <h4 class="mb-2">Contact Information</h4>
+    <hr />
+    <div class="input-group mb-3">
+        <input type="text" class="form-control me-5" placeholder="First Name">
+        <input type="text" class="form-control" placeholder="Last Name">
+    </div>
+    <div class="input-group mb-3">
+        <input type="email" class="form-control" placeholder="Email">
+    </div>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Preferred Phone Number">
+    </div>
+    <div class="input-group mb-3">
+        <select class="form-select">
+            <option selected>Country / Region of Residence</option>
+            <option value="US">United States</option>
+            <option value="CA">Canada</option>
+        </select>
+    </div>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="State/Province">
+    </div>
+    <h4 class="mb-2">Resume</h4>
+    <hr/>
+</div>
 
 <div class="overflow-hidden text-center" style="min-height:200px">
     <div class="col mx-auto my-5">
@@ -10,7 +38,7 @@
     <a href="jobs">&lt; Back to search results </a>
 </div>
 @code {
-    [Parameter] public JobPosting Posting { get; set; }
+    [Parameter] public JobPostingAPIReponse Posting { get; set; }
     [Parameter] public Action<ApplyStatus> UpdateStatus { get; set; }
 
     private void SubmitResume()

@@ -1,7 +1,19 @@
 ﻿<div class="my-5 mx-auto text-center w-50">
-    <h1 class="mb-5">@Posting.JobTitle</h1>
+    <h1 class="mb-5">@Posting.Detail.JobTitle</h1>
+    <h2 class="mb-2">Your Resume</h2>
+    <h5 class="fw-normal mb-5">Please submit your resume. It will help us understand<br/>which teams most closely match your skills and interests.<br />Share your resume in any of the following formats: PDF, Microsoft Word, Pages, RTF, or TXT.</h5>
+    <div id="drop-area" class="mb-5 border border-3 p-5 mb-3">
+        <form class="my-form">
+            <p>Upload files by dragging and dropping them here</p>
+            <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)" class="visually-hidden">
+            <label class="btn btn-primary" for="fileElem">Select Files</label>
+        </form>
+    </div>
+    <h2 class="mb-2">Optional Information</h2>
+    <h5 class="fw-normal mb-5">Add a cover letter, portfolio link, letters of recommendation, and more.</h5>
 </div>
-<p>Resume Upload</p>
+
+
 
 <div class="overflow-hidden text-center" style="min-height:200px">
     <div class="col mx-auto my-5">
@@ -10,7 +22,7 @@
     <a href="jobs">&lt; Back to search results </a>
 </div>
 @code {
-    [Parameter] public JobPosting Posting { get; set; }
+    [Parameter] public JobPostingAPIReponse Posting { get; set; }
     [Parameter] public Action<ApplyStatus> UpdateStatus { get; set; }
 
 }

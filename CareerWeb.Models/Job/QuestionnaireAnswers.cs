@@ -10,7 +10,7 @@ namespace CareerWeb.Models.Job
     {
         public int ID { get; set; }
         public int QuestionID { get; set; }
-        public int Order { get; set; }
-        public string Answer { get; set; }
+        public int QuestionOrder { get; set; }
+        public string Answers { get; set; }
     }
 }

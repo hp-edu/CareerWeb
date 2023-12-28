@@ -1,16 +1,16 @@
 ﻿<div class="my-5 mx-auto text-center w-50">
-    <h1 class="mb-5">@Posting.JobTitle</h1>
-    <p>@Posting.Location<br />@Posting.Department</p>
+    <h1 class="mb-5">@Posting.Detail.JobTitle</h1>
+    <p>@Posting.Detail.JobLocation<br />@Posting.Detail.Department</p>
 </div>
 
 <div class="row d-flex gx-5">
     <div class="col-md-3 order-md-1">
         <h3>Summary</h3>
-        <h5>Posted: @Posting.PostedAt.ToShortDateString()</h5>
+        <h5>Posted: @Posting.Detail.CreatedAt.ToShortDateString()</h5>
     </div>
     <div class="col-md order-md-2">
         <p>
-            @((MarkupString)Posting.Summary)
+            @((MarkupString)Posting.Detail.Summary)
         </p>
     </div>
 </div>
@@ -23,7 +23,7 @@
     </div>
     <div class="col-md order-md-2">
         <p>
-            @((MarkupString)Posting.Qualification)
+            @((MarkupString)Posting.Detail.Qualification)
         </p>
     </div>
 </div>
@@ -36,7 +36,7 @@
     </div>
     <div class="col-md order-md-2">
         <p>
-            @((MarkupString)Posting.Description)
+            @((MarkupString)Posting.Detail.Description)
         </p>
     </div>
 </div>
@@ -51,7 +51,7 @@
     </div>
     <div class="col-md order-md-2">
         <p>
-            @((MarkupString)Posting.AddtionalRequrement)
+            @((MarkupString)Posting.Detail.AddtionalRequrement)
         </p>
     </div>
 </div>
@@ -64,7 +64,7 @@
     </div>
     <div class="col-md order-md-2">
         <p>
-            @((MarkupString)Posting.PayBenefit)
+            @((MarkupString)Posting.Detail.PayBenefit)
         </p>
     </div>
 </div>
@@ -79,7 +79,7 @@
 </div>
 
 @code {
-    [Parameter] public JobPosting Posting { get; set; }
+    [Parameter] public JobPostingAPIReponse Posting { get; set; }
     [Parameter] public Action<ApplyStatus> UpdateStatus { get; set; }
 
 }
