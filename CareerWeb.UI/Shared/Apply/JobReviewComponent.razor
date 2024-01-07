@@ -8,27 +8,26 @@
     <h4 class="mb-2">Contact Information</h4>
     <hr />
     <div class="input-group mb-3">
-        <input type="text" class="form-control me-5" placeholder="First Name">
-        <input type="text" class="form-control" placeholder="Last Name">
+        <input type="text" class="form-control me-5" placeholder="First Name" @bind="Application.FirstName">
+        <input type="text" class="form-control" placeholder="Last Name" @bind="Application.LastName">
     </div>
     <div class="input-group mb-3">
-        <input type="email" class="form-control" placeholder="Email">
+        <input type="email" class="form-control" placeholder="Email" @bind="Application.Email">
     </div>
     <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Preferred Phone Number">
+        <input type="text" class="form-control" placeholder="Preferred Phone Number" @bind="Application.PreferredPhoneNumber">
     </div>
     <div class="input-group mb-3">
-        <select class="form-select">
-            <option selected>Country / Region of Residence</option>
-            <option value="US">United States</option>
-            <option value="CA">Canada</option>
+        <select class="form-select" @bind="Application.SelectedState">
+            <option value="">Select a state...</option>
+            @foreach (var state in USStates)
+            {
+                <option value="@state">@state</option>
+            }
         </select>
     </div>
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="State/Province">
-    </div>
     <h4 class="mb-2">Resume</h4>
-    <hr/>
+    <hr />
 </div>
 
 <div class="overflow-hidden text-center" style="min-height:200px">
@@ -40,7 +39,22 @@
 @code {
     [Parameter] public JobPostingAPIReponse Posting { get; set; }
     [Parameter] public Action<ApplyStatus> UpdateStatus { get; set; }
+    [Parameter] public ApplicationInfo Application { get; set; }
 
+    private string selectedState;
+    private List<string> USStates = new List<string>()
+    {
+        "Alabama", "Alaska", "Arizona", "Arkansas", "California",
+        "Colorado", "Connecticut", "Delaware", "Florida", "Georgia",
+        "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
+        "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland",
+        "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri",
+        "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey",
+        "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio",
+        "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina",
+        "South Dakota", "Tennessee", "Texas", "Utah", "Vermont",
+        "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
+    };
     private void SubmitResume()
     {
         UpdateStatus.Invoke(ApplyStatus.OnSubmission);

@@ -1,4 +1,5 @@
 ﻿@page "/jobs/{JobID}"
+@using System.Text.Json;
 <div class="container">
     @if (Posting != null)
     {
@@ -8,13 +9,13 @@
                 <JobDescriptionComponent Posting=Posting UpdateStatus="UpdateStatus" />
                 break;
             case ApplyStatus.OnResumeUpload:
-                <JobResumeUploadComponent Posting=Posting UpdateStatus="UpdateStatus" />
+                <JobResumeUploadComponent Application=Application Posting=Posting UpdateStatus="UpdateStatus" />
                 break;
             case ApplyStatus.OnQuestionnaire:
-                <JobQuestionnaireComponent Posting=Posting UpdateStatus="UpdateStatus" />
+                <JobQuestionnaireComponent Application=Application Posting=Posting UpdateStatus="UpdateStatus" />
                 break;
             case ApplyStatus.OnReview:
-                <JobReviewComponent Posting=Posting UpdateStatus="UpdateStatus" />
+                <JobReviewComponent Application=Application Posting=Posting UpdateStatus="UpdateStatus" />
                 break;
             case ApplyStatus.OnSubmission:
                 <JobSubmitSuccessComponent Posting=Posting />
@@ -37,18 +38,21 @@
     public JobPostingAPIReponse Posting { get; set; }
 
     private ApplyStatus ApplyStatus { get; set; } = ApplyStatus.OnDescription;
+    private ApplicationInfo Application = new ApplicationInfo();
 
     protected override async Task OnInitializedAsync()
     {
         if (int.TryParse(JobID, out int jobID))
         {
             Posting = await JobService.GetJobPosting(jobID);
+            Application.JobID = jobID;
         }
     }
 
     public void UpdateStatus(ApplyStatus status)
     {
         ApplyStatus = status;
+        Console.WriteLine(JsonSerializer.Serialize(Application));
         StateHasChanged();
     }
 }
