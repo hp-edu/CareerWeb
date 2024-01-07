@@ -10,13 +10,17 @@
             @foreach (var Answer in Question.Answers.OrderBy(o => o.QuestionOrder))
             {
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="@Answer.QuestionID">
-                    <label class="form-check-label" for="@Answer.QuestionID">
+                    <input class="form-check-input" type="radio"
+                           name="@Question.ID"
+                           onchange="@(()=> {
+                               Application.QuestionAnswers[Question.ID] = Answer.ID;
+})" />
+                    <label class="form-check-label" for="@Question.ID">
                         @Answer.Answers
                     </label>
                 </div>
             }
-            <hr/>
+            <hr />
         </div>
     }
 </div>
@@ -30,5 +34,5 @@
 @code {
     [Parameter] public JobPostingAPIReponse Posting { get; set; }
     [Parameter] public Action<ApplyStatus> UpdateStatus { get; set; }
-
+    [Parameter] public ApplicationInfo Application { get; set; }
 }
