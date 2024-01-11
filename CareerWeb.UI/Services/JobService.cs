@@ -1,6 +1,4 @@
 ﻿using CareerWeb.Models.Job;
-using System;
-using System.Net.Http;
 using System.Net.Http.Json;
 
 namespace CareerWeb.UI.Services
@@ -15,9 +13,10 @@ namespace CareerWeb.UI.Services
 
         }
 
-        public async Task<List<JobSummary>> GetJobList()
+        public async Task<List<JobSummary>> GetJobList(JobSearchCondition searchCondition = null)
         {
-            var response = await _httpClient.GetAsync("Job/jobs");
+            JsonContent? jsonContent = searchCondition == null ? null : JsonContent.Create(searchCondition);
+            var response = await _httpClient.PostAsync("Job/jobs", jsonContent);
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadFromJsonAsync<List<JobSummary>>();
         }
@@ -27,6 +26,11 @@ namespace CareerWeb.UI.Services
             var response = await _httpClient.GetAsync($"Job/job/{id}");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadFromJsonAsync<JobPostingAPIReponse>();
+        }
+
+        public async Task SubmitResume(ApplicationInfo applicationInfo)
+        {
+            var response = await _httpClient.PostAsJsonAsync($"Job/job",applicationInfo);
         }
     }
 }

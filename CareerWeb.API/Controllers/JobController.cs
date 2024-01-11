@@ -1,8 +1,8 @@
+using CareerWeb.API.Services;
 using CareerWeb.Models.Job;
 using Dapper;
 using Microsoft.AspNetCore.Mvc;
 using Npgsql;
-using System.Threading.Tasks;
 
 namespace CareerWeb.API.Controllers
 {
@@ -10,53 +10,40 @@ namespace CareerWeb.API.Controllers
     [Route("[controller]")]
     public class JobController : ControllerBase
     {
-        private readonly string _connectionString;
+        private readonly JobServices _jobService;
+        private readonly EmailService _emailService;
 
-        public JobController(IConfiguration configuration)
+        public JobController(JobServices jobService, EmailService emailService)
         {
-            _connectionString = configuration.GetConnectionString("PostgreSQL");
+            _jobService = jobService;
+            _emailService = emailService;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("jobs")]
-        public IActionResult GetJobList()
+        public async Task<IActionResult> GetJobList(JobSearchCondition searchCondition = null)
         {
-            using (var connection = new NpgsqlConnection(_connectionString))
-            {
-                string sql = "SELECT id, jobtitle, department, joblocation, createdat FROM jobpostings";
-                var jobSummaries = connection.Query<JobSummary>(sql).ToList();
-                return Ok(jobSummaries);
-            }
+            var result = await _jobService.GetJobList(searchCondition);
+            return Ok(result);
+         
         }
 
         [HttpGet]
         [Route("job/{id}")]
-        public IActionResult GetJobByID(int id)
+        public async Task<IActionResult> GetJobByID(int id)
         {
-            using (var connection = new NpgsqlConnection(_connectionString))
-            {
-                var parameter = new { jobID = id };
-                
-                string sql = "SELECT * FROM jobpostings WHERE id = @jobID;";
-                var jobPostring = connection.Query<JobPosting>(sql,parameter).SingleOrDefault();
+            var result = await _jobService.GetJobByID(id);
+            return Ok(result);
+        }
 
-                sql = "SELECT qq.* FROM jobpostings jp INNER JOIN questionnairequestions qq ON qq.id = ANY(jp.questionnaireid) WHERE jp.id = @jobID;";
-                var questions = connection.Query<QuestionnaireQuestions>(sql, parameter).ToList();
-
-                sql = "SELECT qa.* FROM jobpostings jp\r\n\tINNER JOIN questionnaireanswers qa ON qa.questionid = ANY(jp.questionnaireid) WHERE jp.id = @jobID;";
-                var answers = connection.Query<QuestionnaireAnswers>(sql, parameter);
-
-                JobPostingAPIReponse jobDetailReponse = new JobPostingAPIReponse();
-                jobDetailReponse.Detail = jobPostring;
-                jobDetailReponse.Questions = questions;
-
-                foreach (var question in jobDetailReponse.Questions)
-                {
-                    question.Answers = answers.Where(o => o.QuestionID == question.ID).ToList();
-                }
-
-                return Ok(jobDetailReponse);
-            }
+        [HttpPost]
+        [Route("job")]
+        public async Task<IActionResult> SubmitResume(ApplicationInfo applicationInfo)
+        {
+            var job = await _jobService.GetJobByID(applicationInfo.JobID);
+            var submittedQuestionnaireAnswers = await _jobService.GetQuestionAnswers(applicationInfo.QuestionAnswers);
+            await _emailService.SendEmail(job, applicationInfo, submittedQuestionnaireAnswers);
+            return Ok();
         }
     }
 }

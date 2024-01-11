@@ -1,9 +1,12 @@
-﻿#drop-area {
-    border-style: dashed;
-    text-align: center;
+﻿.file-drop-zone {
+    display: flex;
+    width: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #DBDBDB;
 }
 
-.my-form p {
-    margin-top: 20px;
-    font-size: 20px;
+::deep input[type=file] {
+    width: 100%;
+    padding: 50px;
 }
