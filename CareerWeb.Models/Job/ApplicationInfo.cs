@@ -9,5 +9,9 @@
         public string Email { get; set; }
         public string PreferredPhoneNumber { get; set; }
         public string SelectedState { get; set; }
+        public byte[] ResumeFileContents { get; set; }
+        public string ResumeFileName { get; set; }
+        public byte[] OptionalFileContents { get; set; }
+        public string OptionalFileName { get; set; }        
     }
 }
