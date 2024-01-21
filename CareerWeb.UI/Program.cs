@@ -4,10 +4,11 @@ using CareerWeb.UI;
 using CareerWeb.UI.Services;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
+var configuration = builder.Configuration;
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7087") });
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(configuration["ApiBaseUrl"]) });
 builder.Services.AddScoped<JobService>();
 
 await builder.Build().RunAsync();
